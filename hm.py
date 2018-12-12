@@ -12,7 +12,7 @@ class hangman:
 
         button=Button(self.frame1, text="EXIT",relief="sunken", height="6",
                          width="9", bg="#FF0000", command="exit")                               #Exit button
-        
+
         self.frame2=Frame(self.frame)                                                           #Frame containing description of the game
         info=Text(self.frame2,height=30,width=72)                                               #Text widget to display description
         img=Text(self.frame2,height=30,width=50)                                                #Text field to enclose image of hangman logo
@@ -27,7 +27,7 @@ class hangman:
         info.insert(END,aboutb,'small')                                                         #Inserting and configuring the body of description
         start=Button(self.frame2, text="START",relief="sunken", height="6",
                          width="9", bg="#008000", command=lambda: self.st())                    #Start button
-        
+
         start.grid(row=1,column=0,columnspan=2)
         wc.grid(row=0,column=0,sticky=W )
         info.grid(row=0,column=1)
@@ -38,6 +38,6 @@ class hangman:
         button.grid(row=0,column=1,sticky=W)
         self.top.mainloop()
     def st(self):                                                                               #functionality of start button
-        self.frame2.destroy()                                                                   #Clearing frame2 
+        self.frame2.destroy()                                                                   #Clearing frame2
 a=hangman()                                                                                     #object of a class
 a.maingui()                                                                                     #function called
