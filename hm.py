@@ -10,7 +10,7 @@ class hangman:
                    relief="raised", height="4", width="77",font=("Helvetica", 16))
 
 
-        button=Button(self.frame, text="EXIT",relief="sunken", height="6",
+        button=Button(self.frame1, text="EXIT",relief="sunken", height="6",
                          width="9", bg="#FF0000", command="exit")
         
         self.frame2=Frame(self.frame)
@@ -25,10 +25,10 @@ class hangman:
         img.image_create(END, image=diag)
         info.insert(END,abouth,'big')
         info.insert(END,aboutb,'small')
-        start=Button(self.frame, text="START",relief="sunken", height="6",
-                         width="9", bg="#008000", command="exit")
+        start=Button(self.frame2, text="START",relief="sunken", height="6",
+                         width="9", bg="#008000", command=lambda: self.st())
         
-        start.grid(row=2,column=0)
+        start.grid(row=1,column=0,columnspan=2)
         wc.grid(row=0,column=0,sticky=W )
         info.grid(row=0,column=1)
         img.grid(row=0,column=0)
@@ -37,5 +37,7 @@ class hangman:
         self.frame.grid(row=0,column=0)
         button.grid(row=0,column=1,sticky=W)
         self.top.mainloop()
+    def st(self):
+        self.frame2.destroy()
 a=hangman()
 a.maingui()
