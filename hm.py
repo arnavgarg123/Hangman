@@ -64,14 +64,17 @@ class hangman:
             diag = PhotoImage(file='proj/hangman5.png')  # Linking the photo of hangman
             diag = diag.subsample(2, 2)  # Setting size of the photo
             img.image_create(END, image=diag)  # Inserting image to text widget
+
             img.grid(row=5, columnspan=self.l)
         if self.err == 5:
             self.fail()
 
     def fail(self):
+        self.frame2.destroy()
         print("fail")
 
     def great(self):
+        self.frame2.destroy()
         print("success")
 
     def hangmang(self):
