@@ -1,4 +1,5 @@
 from tkinter import *
+import random
 class hangman:
     def maingui(self):
         self.top=Tk()                                                                           #creating main window
@@ -39,5 +40,61 @@ class hangman:
         self.top.mainloop()
     def st(self):                                                                               #functionality of start button
         self.frame2.destroy()                                                                   #Clearing frame2
+        self.hangmang() 
+
+    def inpi(self):
+        self.inpu = self.inp.get()
+        print(self.inpu)
+        match=0
+        for j in range (self.l):
+            if self.let[j]==self.inpu:
+                self.count=self.count+1
+                self.letter[j].insert(END,self.let[j])
+                match=1
+            if self.count==self.l:
+                self.great()
+                break
+        if match==0:
+            self.err=self.err+1
+            img=Text(self.frame2,height=30,width=50)
+            diag=PhotoImage(file='proj/hangman5.png')                                               #Linking the photo of hangman
+            diag = diag.subsample(2, 2)                                                             #Setting size of the photo
+            img.image_create(END, image=diag)                                                       #Inserting image to text widget
+            img.grid(row=5,columnspan=self.l)
+        if self.err==5:
+            self.fail()
+    def fail(self):
+        print("fail")
+
+    def great(self):
+        print("success")
+
+    def hangmang(self):
+        self.count=0
+        self.err=0
+        fil=open("./proj/words.txt").readlines()
+        i=random.randint(0,58109)
+        self.inpu=0
+        self.l=len(fil[i])-1
+        self.letter={}
+        self.let=list(fil[i])
+        del(self.let[self.l])
+        print(self.let,self.l)
+        self.frame2=Frame(self.frame)
+        for i in range(self.l):
+            self.letter[i]=Text(self.frame2,height=4,width=6,font=("Helvetica", 16)) 
+            self.letter[i].grid(row=2,column=i)
+        self.inp=Entry(self.frame2,width=2,font=("Helvetica", 26))
+        self.inp.grid(row=3,column=int(self.l/2))
+        self.frame2.grid(row=1,column=0,columnspan=self.l)
+        def log():
+            self.inpi()
+        submit = Button(self.frame2, text="ENTER", command=log)
+        print(self.inpu)
+        
+        
+        submit.grid(row=4,column=int(self.l/2))
+    
+
 a=hangman()                                                                                     #object of a class
 a.maingui()                                                                                     #function called
