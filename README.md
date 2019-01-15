@@ -1,2 +1,2 @@
 # Hangman
-Hang man game made using python
+Hangman game with gui made using python
